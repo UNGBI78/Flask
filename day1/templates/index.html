@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ data.title }}</title>
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+<style>
+            #introduce{
+            font-family: "Nanum Pen Script";
+            font-size: 3.0rem;
+            text-align: center;
+            }
+</style>
+</head>
+<body>
+  <h1 id="introduce">안녕하세요, 제 이름은 {{ data.user }} 입니다.</h1>
+
+  {% if data.is_admin %}
+  <h3>좋아하는 음식 목록</h3>
+  {% else %}
+  <p>You do not have admin priviliges.</p>
+  {% endif%}
+  
+  <ul>
+    {% for item in data.item_list %}
+    <li> {{ item }} </li>
+    {% endfor %}
+  </ul>
+  <h3>사용 유저 목록</h3>
+  <ul>
+    {% for user in users %}
+    <li> {{ user.name }} ({{ user.username }}) </li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
